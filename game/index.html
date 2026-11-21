@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbour Dusk — Spot the Difference</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: #0b1226; color: #e8eefc;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  header { text-align: center; padding: 14px 12px 4px; }
+  header h1 { margin: 0; font-size: 28px; letter-spacing: 0.5px; }
+  header p { margin: 4px 0 0; color: #9fb4dd; font-size: 14px; }
+  #hud {
+    display: flex; gap: 18px; flex-wrap: wrap; justify-content: center;
+    align-items: center; padding: 8px 12px; font-size: 16px;
+  }
+  #hud b { color: #ffd166; }
+  #stage { padding: 4px 10px; }
+  canvas {
+    background: #101c3a; border: 2px solid #2b3f6e; border-radius: 10px;
+    max-width: 96vw; height: auto; display: block;
+  }
+  #controls { display: flex; gap: 10px; padding: 10px; flex-wrap: wrap; justify-content: center; }
+  button {
+    background: #1d2f57; color: #e8eefc; border: 1px solid #3d5a94;
+    border-radius: 8px; padding: 9px 16px; font-size: 15px; cursor: pointer;
+  }
+  button:hover { background: #274073; }
+  button:disabled { opacity: 0.45; cursor: default; }
+  #message { min-height: 22px; font-size: 15px; color: #ffd166; text-align: center; padding: 0 12px 14px; }
+  .keys { color: #9fb4dd; font-size: 13px; text-align: center; padding-bottom: 16px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Harbour Dusk — Spot the Difference</h1>
+  <p>Two harbour pictures, seven quiet differences. Click either picture to mark one.</p>
+</header>
+<div id="hud">
+  <span>Found <b id="hud-found">0</b> / <b id="hud-total">7</b></span>
+  <span>Remaining <b id="hud-remaining">7</b></span>
+  <span>Time <b id="hud-time">0:00</b></span>
+  <span>Score <b id="hud-score">0</b></span>
+  <span>Hints <b id="hud-hints">3</b></span>
+</div>
+<div id="stage"><canvas id="board" width="1180" height="420" tabindex="0" aria-label="Spot the difference board"></canvas></div>
+<div id="controls">
+  <button id="btn-start" type="button">Start</button>
+  <button id="btn-hint" type="button">Hint (H)</button>
+  <button id="btn-restart" type="button">New round (R)</button>
+</div>
+<div id="message" role="status"></div>
+<div class="keys">Mouse: click a difference &middot; Keyboard: arrows move the gold ring, Enter/Space marks, H hint, R new round</div>
+<script type="module" src="src/game.js"></script>
+</body>
+</html>
